@@ -205,17 +205,18 @@ const ventasPorProducto = ventas.reduce((acc, venta) => {
   acc[venta.idProducto] = (acc[venta.idProducto] || 0) + venta.cantidad;
   return acc;
 }, {});
-console.log(ventasPorProducto);
 
 // Generar un array que contenga los productos y la cantidad de ventas (map)
 
 const productosVentas = productos.map((producto) => ({
   ...producto,
-  cantidadVentas: ventasPorProducto[producto.id],
+  cantidadVentas: ventasPorProducto[producto.id] || 0,
 }));
-console.log(productosVentas);
 
 // Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
+
+const topProductosVentas = productosVentas.slice(0, 3);
+console.log(productosVentas);
 // console.log(topVentasPorProducto);
 // Mostrar la información de los productos
 
