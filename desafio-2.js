@@ -242,9 +242,14 @@ const totalIngresosCategorias = (productos, ventas) => {
 
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
 function identificarClientesVIP(productos, ventas, clientes) {
+  // Calcular el total gastado por cada cliente con reduce
   let totalGastoPorCliente = ventas.reduce((acc, venta) => {
+    // Buscar el cliente correspondiente a la venta actual
     let cliente = clientes.find((c) => c.idCliente === venta.idCliente);
+    // Buscar el producto correspondiente a la venta actual
     let producto = productos.find((p) => p.id === venta.idProducto);
+
+    // Si el cliente y el producto existen, calcular el gasto de esa venta
     if (cliente && producto) {
       let gasto = producto.precio * venta.cantidad;
       if (!acc[cliente.idCliente]) {
@@ -252,9 +257,12 @@ function identificarClientesVIP(productos, ventas, clientes) {
       }
       acc[cliente.idCliente] += gasto;
     }
+    // Devolver el acumulador con el total de gasto por cliente
+
     return acc;
   }, {});
 
+  // Filtrar los clientes que han gastado más de $1.000.000
   return clientes
     .filter((cliente) => totalGastoPorCliente[cliente.idCliente] > 1000000)
     .map((cliente) => ({
