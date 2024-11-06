@@ -241,7 +241,7 @@ const totalIngresosCategorias = (productos, ventas) => {
 };
 
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
-function identificarClientesVIP() {
+function identificarClientesVIP(productos, ventas, clientes) {
   let totalGastoPorCliente = ventas.reduce((acc, venta) => {
     let cliente = clientes.find((c) => c.idCliente === venta.idCliente);
     let producto = productos.find((p) => p.id === venta.idProducto);
@@ -265,7 +265,7 @@ function identificarClientesVIP() {
 
 // 5. Crear una función que genere un reporte de inventario.
 
-function generarReporteInventario() {
+function generarReporteInventario(productos) {
   return productos.map((producto) => {
     let status;
     // "Low Stock" si el stock es menor a 10 (stock < 10), "In Stock" si está entre 10 y 20 (10>=stock<=20), y "Enough Stock" si es mayor a 20 (stock>20)
@@ -294,7 +294,7 @@ console.log("Total de ingresos por categoría de producto:");
 console.log(totalIngresosCategorias(productos, ventas));
 console.log("--------- 4 ---------");
 console.log("Los clientes VIP son:");
-console.log(identificarClientesVIP());
+console.log(identificarClientesVIP(productos, ventas, clientes));
 console.log("--------- 5 ---------");
 console.log("Reporte de inventario:");
-console.log(generarReporteInventario());
+console.log(generarReporteInventario(productos));
