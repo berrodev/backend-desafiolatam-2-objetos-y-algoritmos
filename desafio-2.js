@@ -41,14 +41,14 @@ const { productos, ventas, clientes } = {
       "nombre": "Escritorio",
       "precio": 150000,
       "categoria": "Muebles",
-      "stock": 30,
+      "stock": 15,
     },
     {
       "id": 7,
       "nombre": "Impresora",
       "precio": 200000,
       "categoria": "Oficina",
-      "stock": 60,
+      "stock": 1,
     },
     {
       "id": 8,
