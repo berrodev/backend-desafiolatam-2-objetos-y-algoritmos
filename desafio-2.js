@@ -272,7 +272,6 @@ function identificarClientesVIP(productos, ventas, clientes) {
 }
 
 // 5. Crear una función que genere un reporte de inventario.
-
 function generarReporteInventario(productos) {
   return productos.map((producto) => {
     let status;
