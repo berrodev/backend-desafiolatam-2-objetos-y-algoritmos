@@ -200,14 +200,23 @@ const { productos, ventas, clientes } = {
 
 // 2. Implementar una función que encuentre los 3 productos más vendidos.
 
-// Encontrar la cantidad total de ventas por producto
+// Encontrar la cantidad total de ventas por producto y guardarlos en un objeto
 const ventasPorProducto = ventas.reduce((acc, venta) => {
   acc[venta.idProducto] = (acc[venta.idProducto] || 0) + venta.cantidad;
-  console.log(acc);
   return acc;
 }, {});
+console.log(ventasPorProducto);
 
-// Ordenar y extraer los 3 productos mas vendidos
+// Generar un array que contenga los productos y la cantidad de ventas (map)
+
+const productosVentas = productos.map((producto) => ({
+  ...producto,
+  cantidadVentas: 1,
+}));
+console.log(productosVentas);
+
+// Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
+// console.log(topVentasPorProducto);
 // Mostrar la información de los productos
 
 // 3. Crear una función que calcule el total de ingresos por categoría de producto.
