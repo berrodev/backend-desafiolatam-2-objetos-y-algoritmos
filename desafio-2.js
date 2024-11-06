@@ -1,4 +1,5 @@
-const data = {
+// 1. Crear las estructuras de datos necesarias utilizando objetos JSON para representar productos, ventas y clientes.
+const { productos, ventas, clientes } = {
   "productos": [
     {
       "id": 1,
@@ -196,3 +197,12 @@ const data = {
     },
   ],
 };
+
+// 2. Implementar una función que encuentre los 3 productos más vendidos.
+// Encontrar la cantidad total de ventas por producto
+// Ordenar y extraer los 3 productos mas vendidos
+// Mostrar la información de los productos
+
+// 3. Crear una función que calcule el total de ingresos por categoría de producto.
+// 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
+// 5. Crear una función que genere un reporte de inventario.
