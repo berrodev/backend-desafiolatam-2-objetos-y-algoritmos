@@ -215,8 +215,10 @@ const productosVentas = productos.map((producto) => ({
 
 // Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
 
-const topProductosVentas = productosVentas.slice(0, 3);
-console.log(productosVentas);
+const topProductosVentas = productosVentas
+  .sort((a, b) => b.cantidadVentas - a.cantidadVentas)
+  .slice(0, 3);
+console.log(topProductosVentas);
 // console.log(topVentasPorProducto);
 // Mostrar la información de los productos
 
