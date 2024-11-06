@@ -223,9 +223,11 @@ const tresProductosMasVendidos = (productos, ventas) => {
   return topProductosVentas;
 };
 // Ejecutar función y mostrar la información de los productos
-console.log("Los 3 Productos mas vendidos son:");
-console.log(tresProductosMasVendidos(productos, ventas));
+// console.log("Los 3 Productos mas vendidos son:");
+// console.log(tresProductosMasVendidos(productos, ventas));
 
 // 3. Crear una función que calcule el total de ingresos por categoría de producto.
+const totalIngresosCategorias = (productos, ventas) => {};
+
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
 // 5. Crear una función que genere un reporte de inventario.
