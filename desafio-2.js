@@ -200,27 +200,30 @@ const { productos, ventas, clientes } = {
 
 // 2. Implementar una función que encuentre los 3 productos más vendidos.
 
-// Encontrar la cantidad total de ventas por producto y guardarlos en un objeto
-const ventasPorProducto = ventas.reduce((acc, venta) => {
-  acc[venta.idProducto] = (acc[venta.idProducto] || 0) + venta.cantidad;
-  return acc;
-}, {});
+const tresProductosMasVendidos = (productos, ventas) => {
+  // Encontrar la cantidad total de ventas por producto y guardarlos en un objeto
+  const ventasPorProducto = ventas.reduce((acc, venta) => {
+    acc[venta.idProducto] = (acc[venta.idProducto] || 0) + venta.cantidad;
+    return acc;
+  }, {});
 
-// Generar un array que contenga los productos y la cantidad de ventas (map)
+  // Generar un array que contenga los productos y la cantidad de ventas (map)
 
-const productosVentas = productos.map((producto) => ({
-  ...producto,
-  cantidadVentas: ventasPorProducto[producto.id] || 0,
-}));
+  const productosVentas = productos.map((producto) => ({
+    ...producto,
+    cantidadVentas: ventasPorProducto[producto.id] || 0,
+  }));
 
-// Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
+  // Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
 
-const topProductosVentas = productosVentas
-  .sort((a, b) => b.cantidadVentas - a.cantidadVentas)
-  .slice(0, 3);
-console.log(topProductosVentas);
-// console.log(topVentasPorProducto);
-// Mostrar la información de los productos
+  const topProductosVentas = productosVentas
+    .sort((a, b) => b.cantidadVentas - a.cantidadVentas)
+    .slice(0, 3);
+  // Se retorna el array
+  return topProductosVentas;
+};
+// Ejecutar función y mostrar la información de los productos
+console.log(tresProductosMasVendidos(productos, ventas));
 
 // 3. Crear una función que calcule el total de ingresos por categoría de producto.
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
