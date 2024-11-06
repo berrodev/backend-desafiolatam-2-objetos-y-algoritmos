@@ -199,7 +199,14 @@ const { productos, ventas, clientes } = {
 };
 
 // 2. Implementar una función que encuentre los 3 productos más vendidos.
+
 // Encontrar la cantidad total de ventas por producto
+const ventasPorProducto = ventas.reduce((acc, venta) => {
+  acc[venta.idProducto] = (acc[venta.idProducto] || 0) + venta.cantidad;
+  console.log(acc);
+  return acc;
+}, {});
+
 // Ordenar y extraer los 3 productos mas vendidos
 // Mostrar la información de los productos
 
