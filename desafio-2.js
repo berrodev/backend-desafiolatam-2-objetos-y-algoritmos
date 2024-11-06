@@ -5,7 +5,7 @@ const { productos, ventas, clientes } = {
       "id": 1,
       "nombre": "Laptop",
       "precio": 1200000,
-      "categoria": "Electrónica",
+      "categoria": "Electronica",
       "stock": 50,
     },
     {
@@ -26,7 +26,7 @@ const { productos, ventas, clientes } = {
       "id": 4,
       "nombre": "Monitor",
       "precio": 300000,
-      "categoria": "Electrónica",
+      "categoria": "Electronica",
       "stock": 80,
     },
     {
@@ -68,7 +68,7 @@ const { productos, ventas, clientes } = {
       "id": 10,
       "nombre": "Tablet",
       "precio": 400000,
-      "categoria": "Electrónica",
+      "categoria": "Electronica",
       "stock": 45,
     },
   ],
@@ -227,7 +227,26 @@ const tresProductosMasVendidos = (productos, ventas) => {
 // console.log(tresProductosMasVendidos(productos, ventas));
 
 // 3. Crear una función que calcule el total de ingresos por categoría de producto.
-const totalIngresosCategorias = (productos, ventas) => {};
+const totalIngresosCategorias = (productos, ventas) => {
+  return ventas.reduce((ingresosPorCategoria, venta) => {
+    // Encontrar la cantidad total de ventas por categorias
+    const producto = productos.find((p) => p.id === venta.idProducto);
+
+    if (producto) {
+      // Calculamos el ingreso de la venta actual (precio*cantidad)
+      const ingreso = producto.precio * venta.cantidad;
+      const categoria = producto.categoria;
+
+      // Sumar el ingreso en la categoría
+      ingresosPorCategoria[categoria] =
+        (ingresosPorCategoria[categoria] || 0) + ingreso;
+    }
+
+    return ingresosPorCategoria;
+  }, {});
+};
+console.log("Total de ingresos por categoría de producto:");
+console.log(totalIngresosCategorias(productos, ventas));
 
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
 // 5. Crear una función que genere un reporte de inventario.
