@@ -284,6 +284,7 @@ function generarReporteInventario(productos) {
     } else {
       status = "Enough Stock";
     }
+    // Se devuelven los productos con algunas propiedades y el estado de stick
     return {
       nombre: producto.nombre,
       categoria: producto.categoria,
