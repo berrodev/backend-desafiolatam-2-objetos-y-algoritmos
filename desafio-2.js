@@ -211,7 +211,7 @@ console.log(ventasPorProducto);
 
 const productosVentas = productos.map((producto) => ({
   ...producto,
-  cantidadVentas: 1,
+  cantidadVentas: ventasPorProducto[producto.id],
 }));
 console.log(productosVentas);
 
