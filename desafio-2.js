@@ -199,7 +199,6 @@ const { productos, ventas, clientes } = {
 };
 
 // 2. Implementar una función que encuentre los 3 productos más vendidos.
-
 const tresProductosMasVendidos = (productos, ventas) => {
   // Encontrar la cantidad total de ventas por producto y guardarlos en un objeto
   const ventasPorProducto = ventas.reduce((acc, venta) => {
@@ -208,23 +207,18 @@ const tresProductosMasVendidos = (productos, ventas) => {
   }, {});
 
   // Generar un array que contenga los productos y la cantidad de ventas (map)
-
   const productosVentas = productos.map((producto) => ({
     ...producto,
     cantidadVentas: ventasPorProducto[producto.id] || 0,
   }));
 
   // Ordenar (sort) y extraer (slice) los 3 productos mas vendidos
-
   const topProductosVentas = productosVentas
     .sort((a, b) => b.cantidadVentas - a.cantidadVentas)
     .slice(0, 3);
   // Se retorna el array
   return topProductosVentas;
 };
-// Ejecutar función y mostrar la información de los productos
-// console.log("Los 3 Productos mas vendidos son:");
-// console.log(tresProductosMasVendidos(productos, ventas));
 
 // 3. Crear una función que calcule el total de ingresos por categoría de producto.
 const totalIngresosCategorias = (productos, ventas) => {
@@ -245,8 +239,6 @@ const totalIngresosCategorias = (productos, ventas) => {
     return ingresosPorCategoria;
   }, {});
 };
-// console.log("Total de ingresos por categoría de producto:");
-// console.log(totalIngresosCategorias(productos, ventas));
 
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
 function identificarClientesVIP() {
@@ -270,8 +262,6 @@ function identificarClientesVIP() {
       totalGasto: totalGastoPorCliente[cliente.idCliente],
     }));
 }
-// console.log("Los clientes VIP son:");
-// console.log(identificarClientesVIP());
 
 // 5. Crear una función que genere un reporte de inventario.
 
@@ -294,5 +284,17 @@ function generarReporteInventario() {
     };
   });
 }
+
+// Mostrar resultados por consola
+console.log("--------- 2 ---------");
+console.log("Los 3 Productos mas vendidos son:");
+console.log(tresProductosMasVendidos(productos, ventas));
+console.log("--------- 3 ---------");
+console.log("Total de ingresos por categoría de producto:");
+console.log(totalIngresosCategorias(productos, ventas));
+console.log("--------- 4 ---------");
+console.log("Los clientes VIP son:");
+console.log(identificarClientesVIP());
+console.log("--------- 5 ---------");
 console.log("Reporte de inventario:");
 console.log(generarReporteInventario());
