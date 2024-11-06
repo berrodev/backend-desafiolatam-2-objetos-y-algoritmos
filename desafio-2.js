@@ -245,8 +245,31 @@ const totalIngresosCategorias = (productos, ventas) => {
     return ingresosPorCategoria;
   }, {});
 };
-console.log("Total de ingresos por categoría de producto:");
-console.log(totalIngresosCategorias(productos, ventas));
+// console.log("Total de ingresos por categoría de producto:");
+// console.log(totalIngresosCategorias(productos, ventas));
 
 // 4. Implementar una función que identifique a los clientes "VIP" (aquellos que han gastado más de $1,000,000 en total).
+
+function identificarClientesVIP() {
+  let totalGastoPorCliente = ventas.reduce((acc, venta) => {
+    let cliente = clientes.find((c) => c.idCliente === venta.idCliente);
+    let producto = productos.find((p) => p.id === venta.idProducto);
+    if (cliente && producto) {
+      let gasto = producto.precio * venta.cantidad;
+      if (!acc[cliente.idCliente]) {
+        acc[cliente.idCliente] = 0;
+      }
+      acc[cliente.idCliente] += gasto;
+    }
+    return acc;
+  }, {});
+
+  return clientes
+    .filter((cliente) => totalGastoPorCliente[cliente.idCliente] > 1000000)
+    .map((cliente) => ({
+      ...cliente,
+      totalGasto: totalGastoPorCliente[cliente.idCliente],
+    }));
+}
+console.log(identificarClientesVIP());
 // 5. Crear una función que genere un reporte de inventario.
